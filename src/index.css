@@ -9,19 +9,19 @@ body{
   background-attachment: fixed; 
 }
 
-/* Custom CSS */
+
 .hover-border::after {
   content: "";
   position: absolute;
-  bottom: 4px; /* Adjust to match the border size */
-  right: 4px; /* Adjust to match the border size */
-  width: calc(100% - 4px); /* Calculate the width to fill the gap */
-  height: calc(100% - 4px); /* Calculate the height to fill the gap */
-  border: 2px solid transparent; /* Transparent border initially */
+  bottom: 4px; 
+  right: 4px; 
+  width: calc(100% - 4px); 
+  height: calc(100% - 4px); 
+  border: 2px solid transparent; 
   z-index: -1;
-  transition: border-color 0.2s; /* Add transition for border-color only */
+  transition: border-color 0.2s; 
 }
 
 .hover-border:hover::after {
-  border-color: #4299e1; /* Change border color to blue-500 on hover */
+  border-color: #4299e1;
 }
