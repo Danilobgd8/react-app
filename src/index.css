@@ -8,3 +8,20 @@ body{
   background-size: cover; 
   background-attachment: fixed; 
 }
+
+/* Custom CSS */
+.hover-border::after {
+  content: "";
+  position: absolute;
+  bottom: 4px; /* Adjust to match the border size */
+  right: 4px; /* Adjust to match the border size */
+  width: calc(100% - 4px); /* Calculate the width to fill the gap */
+  height: calc(100% - 4px); /* Calculate the height to fill the gap */
+  border: 2px solid transparent; /* Transparent border initially */
+  z-index: -1;
+  transition: border-color 0.2s; /* Add transition for border-color only */
+}
+
+.hover-border:hover::after {
+  border-color: #4299e1; /* Change border color to blue-500 on hover */
+}

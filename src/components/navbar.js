@@ -8,7 +8,7 @@ function Navbar() {
   };
 
   return (
-    <div className="flex items-center justify-between ">
+    <div className="flex items-center justify-between  ">
       <button
         onClick={toggleMenu}
         className="text-blue-500 hover:text-gray-200 md:hidden"

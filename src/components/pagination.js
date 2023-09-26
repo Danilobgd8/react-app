@@ -3,25 +3,31 @@ import { DataDispatchContext } from "./fetchData";
 
 function Pagination() {
   const { state, dispatch } = useContext(DataDispatchContext);
+  const { currentPage, data, itemsPerPage } = state;
 
-  const { currentPage, itemsPerPage, data } = state;
+  const numberOfPages = Math.ceil(data.length / itemsPerPage);
+  const canGoNext = currentPage < numberOfPages;
 
-  const paginate = (pageNumber) => {
-    dispatch({ type: "SET_CURRENT_PAGE", payload: pageNumber });
+  const nextPage = () => {
+    dispatch({ type: "SET_CURRENT_PAGE", payload: currentPage + 1 });
+  };
+
+  const prevPage = () => {
+    dispatch({ type: "SET_CURRENT_PAGE", payload: currentPage - 1 });
   };
 
   return (
     <div className="flex justify-center mt-4">
       <button
-        onClick={() => paginate(currentPage - 1)}
+        onClick={prevPage}
         disabled={currentPage === 1}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-2"
       >
         Previous Page
       </button>
       <button
-        onClick={() => paginate(currentPage + 1)}
-        disabled={data.length < itemsPerPage}
+        onClick={nextPage}
+        disabled={!canGoNext}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-2"
       >
         Next Page

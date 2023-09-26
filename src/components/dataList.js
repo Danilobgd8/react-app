@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { DataDispatchContext } from "./fetchData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import Pagination from "./pagination";
 
 function DataList() {
   const { state, dispatch } = useContext(DataDispatchContext);
@@ -18,9 +19,6 @@ function DataList() {
     }
   };
 
-  const numberOfPages = Math.ceil(data.length / itemsPerPage);
-  const canGoNext = currentPage < numberOfPages;
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
@@ -30,22 +28,14 @@ function DataList() {
     itemsPerPage - currentItems.length
   );
 
-  const nextPage = () => {
-    dispatch({ type: "SET_CURRENT_PAGE", payload: currentPage + 1 });
-  };
-
-  const prevPage = () => {
-    dispatch({ type: "SET_CURRENT_PAGE", payload: currentPage - 1 });
-  };
-
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
-        {currentItems.map((item) => (
+        {currentItems.map((item, index) => (
           <div
             key={item.id}
-            className={`p-4 rounded-md border border-blue-500 rounded-none transition-transform duration-300 ease-in-out transform hover:scale-165 hover:shadow-lg hover:-translate-y-2 hover:-translate-x-2 ${
-              item.small ? "small-item" : ""
+            className={`p-4 rounded-md border border-blue-500 rounded-none transition-transform duration-300 ease-in-out transform hover:scale-165 hover:shadow-lg hover:-translate-y-2 hover:-translate-x-2 hover-border ${
+              index === currentItems.length - 1 ? "last-element" : ""
             }`}
             style={{ zIndex: 1 }}
           >
@@ -60,7 +50,7 @@ function DataList() {
               {item.description.substring(0, 80)}
             </p>
             <p className="mb-5 text-gray-600 ">{item.description}</p>
-            <div className="flex items-center justify-between mb-0">
+            <div className="flex items-center justify-between">
               <a href="/" className="text-blue-600 font-bold">
                 {item.title} <FontAwesomeIcon icon={faArrowRightLong} />
               </a>
@@ -119,22 +109,7 @@ function DataList() {
         </div>
       )}
 
-      <div className="flex justify-center mt-4">
-        <button
-          onClick={prevPage}
-          disabled={currentPage === 1}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-2"
-        >
-          Previous Page
-        </button>
-        <button
-          onClick={nextPage}
-          disabled={!canGoNext}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-2"
-        >
-          Next Page
-        </button>
-      </div>
+      <Pagination />
       <div className="text-center">
         <p>Footer text</p>
       </div>
