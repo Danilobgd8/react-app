@@ -1,11 +1,12 @@
 import React from "react";
+import logo from "./image/Logo.jpg"; // Pretpostavljajući da je slika sa putanjom "./image/Logo.jpg"
 
 function TopMenu() {
   return (
     <nav className="md:flex md:items-center md:w-auto md:text-center md:w-full md:flex-grow">
       <div className="flex justify-between items-center w-full">
-        <div>
-          <p>Logo</p>
+        <div style={{ width: "163px", height: "55px", flexShrink: 0 }}>
+          <img src={logo} alt="Logo" />
         </div>
 
         <div className="hidden md:flex space-x-4">

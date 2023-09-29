@@ -4,9 +4,10 @@
 
 
 body{
-  background-image: url('./components/back.jpg'); 
+  background-image: url('./components/image/back.jpg'); 
   background-size: cover; 
   background-attachment: fixed; 
+
 }
 
 
