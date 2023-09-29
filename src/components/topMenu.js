@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./image/Logo.jpg"; // Pretpostavljajući da je slika sa putanjom "./image/Logo.jpg"
+import logo from "./image/Logo.jpg";
 
 function TopMenu() {
   return (
