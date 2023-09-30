@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { DataDispatchContext } from "./fetchData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
-import Pagination from "./pagination";
 
 function DataList() {
   const { state, dispatch } = useContext(DataDispatchContext);
@@ -29,38 +28,87 @@ function DataList() {
   );
 
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
-        {currentItems.map((item, index) => (
+    <div className="container mx-auto " style={{ maxWidth: "1080px" }}>
+      <div
+        className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2"
+        style={{ maxWidth: "1080px" }}
+      >
+        {currentItems.map((item) => (
           <div
             key={item.id}
-            className={`p-4 rounded-md border border-blue-500 rounded-none transition-transform duration-300 ease-in-out transform hover:scale-165 hover:shadow-lg hover:-translate-y-2 hover:-translate-x-2 hover-border ${
-              index === currentItems.length - 1 ? "last-element" : ""
-            }`}
-            style={{ zIndex: 1 }}
+            className="p-3 bg-white border border-blue-500 transition-transform duration-300 ease-in-out transform hover:scale-165 hover:shadow-lg hover:-translate-y-2 hover:-translate-x-2"
+            style={{
+              width: "540px",
+              height: "434px",
+              border: "1px solid #348ABF",
+            }}
           >
             <img
               src={item.image}
               alt={item.title}
-              className={`mb-5 w-full h-60 object-cover rounded-none`}
-              style={{ zIndex: -1 }}
+              className="mb-2 w-full h-60 object-cover rounded-none"
+              style={{ width: "520px", height: "245px" }}
             />
-            <h2 className="mb-5 text-lg font-semibold">{item.title}</h2>
-            <p className="mb-5 text-gray-600 font-bold">
+            <h2
+              style={{
+                color: "#042440",
+                fontFamily: "Inter",
+                fontSize: "10px",
+                fontStyle: "normal",
+                fontWeight: 700,
+                lineHeight: "normal",
+                textTransform: "uppercase",
+                marginBottom: "15px",
+              }}
+            >
+              {item.title}
+            </h2>
+            <p
+              style={{
+                color: "#042440",
+                fontFamily: "Playfair Display",
+                fontSize: "18px",
+                fontStyle: "normal",
+                fontWeight: 500,
+                lineHeight: "normal",
+                marginBottom: "10px",
+              }}
+            >
               {item.description.substring(0, 80)}
             </p>
-            <p className="mb-5 text-gray-600 ">{item.description}</p>
-            <div className="flex items-center justify-between">
-              <a href="/" className="text-blue-600 font-bold">
-                {item.title} <FontAwesomeIcon icon={faArrowRightLong} />
-              </a>
-              <button
-                onClick={() => deleteItem(item.id, "data")}
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
-              >
-                Delete
-              </button>
-            </div>
+            <p
+              style={{
+                color: "#042440",
+                fontFamily: "Inter",
+                fontSize: "14px",
+                fontStyle: "normal",
+                fontWeight: 400,
+                lineHeight: "normal",
+                marginBottom: "7px",
+              }}
+            >
+              {item.description}
+            </p>
+            <a
+              href="/"
+              style={{
+                color: "#348ABF ",
+                fontFamily: "Inter",
+                fontSize: "10px",
+                fontStyle: "normal",
+                fontWeight: 700,
+                lineHeight: "uppercase",
+              }}
+            >
+              {item.title} <FontAwesomeIcon icon={faArrowRightLong} />
+            </a>
+
+            <button
+              onClick={() => deleteItem(item.id, "data")}
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs"
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>
@@ -70,46 +118,94 @@ function DataList() {
           {currentSmallItems.map((item) => (
             <div
               key={item.id}
-              className={`p-4 rounded-md border border-blue-500 rounded-none transition-transform duration-300 ease-in-out transform hover:scale-165 hover:shadow-lg hover:-translate-y-2 hover:-translate-x-2 small-item`}
-              style={{ zIndex: 1 }}
+              className="p-3 bg-white border border-blue-500 transition-transform duration-300 ease-in-out transform hover:scale-165 hover:shadow-lg hover:-translate-y-2 hover:-translate-x-2"
+              style={{
+                width: "540px",
+                height: "217px",
+                border: "1px solid #348ABF",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
             >
-              <div className="flex">
-                <div className="w-1/2">
-                  <p className="mb-5 text-lg font-semibold">{item.title}</p>
-                  <p className="mb-5 text-gray-600 text-sm">
-                    {item.description.substring(0, 50)}
-                  </p>
-                  <p className="mb-5 text-gray-600 text-sm">
-                    {item.description.substring(0, 50)}
-                  </p>
+              <div className="p-3">
+                <h2
+                  style={{
+                    color: "#042440",
+                    fontFamily: "Inter",
+                    fontSize: "10px",
+                    fontStyle: "normal",
+                    fontWeight: 700,
+                    lineHeight: "normal",
+                    textTransform: "uppercase",
+                    marginBottom: "15px",
+                  }}
+                >
+                  {item.title}
+                </h2>
+                <p
+                  style={{
+                    color: " #000",
+                    fontFamily: "Playfair Display",
+                    fontSize: "16px",
+                    fontStyle: "normal",
+                    fontWeight: 500,
+                    lineHeight: "normal",
+                    marginBottom: "10px",
+                  }}
+                >
+                  {item.description.substring(0, 80)}
+                </p>
+                <p
+                  style={{
+                    color: "#808495",
+                    fontFamily: "Inter",
+                    fontSize: "14px",
+                    fontStyle: "normal",
+                    fontWeight: 400,
+                    lineHeight: "normal",
+                    marginBottom: "7px",
+                  }}
+                >
+                  {item.description}
+                </p>
+                <div>
                   <a
                     href="/"
-                    className="absolute bottom-5 left-0 mb-5 ml-5 text-blue-600 font-bold"
+                    style={{
+                      color: "#348ABF",
+                      fontFamily: "Inter",
+                      fontSize: "10px",
+                      fontStyle: "normal",
+                      fontWeight: 700,
+                      lineHeight: "uppercase",
+                      marginBottom: "10px",
+                    }}
                   >
-                    Link
+                    {item.title} <FontAwesomeIcon icon={faArrowRightLong} />
                   </a>
                   <button
                     onClick={() => deleteItem(item.id, "smallData")}
-                    className="absolute bottom-0 left-0 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-sm"
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs ml-auto"
                   >
                     X
                   </button>
                 </div>
-                <div className="w-1/2 pr-2">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className={`mb-5 w-full h-60 object-cover rounded-none`}
-                    style={{ zIndex: -1 }}
-                  />
-                </div>
               </div>
+              <img
+                src={item.image}
+                alt={item.title}
+                style={{
+                  width: "230px",
+                  height: "197px",
+                  marginLeft: "10px",
+                  marginRight: "10px",
+                }}
+              />
             </div>
           ))}
         </div>
       )}
-
-      <Pagination />
       <div className="text-center">
         <p>Footer text</p>
       </div>

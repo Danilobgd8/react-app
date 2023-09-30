@@ -14,8 +14,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/data", (req, res) => {
-  const limit = 10;
-  const apiUrl = `https://dknhmgstb7daepfpievifqg7te0vaknw.lambda-url.eu-central-1.on.aws?limit=${limit}`;
+  const apiUrl = `https://dknhmgstb7daepfpievifqg7te0vaknw.lambda-url.eu-central-1.on.aws`;
 
   fetch(apiUrl)
     .then((response) => response.json())
@@ -30,7 +29,7 @@ app.get("/data", (req, res) => {
 //---------------------------------------------------------------------------------
 
 app.get("/small-data", (req, res) => {
-  const limit = 4;
+  const limit = 2;
   const apiUrl = `https://dknhmgstb7daepfpievifqg7te0vaknw.lambda-url.eu-central-1.on.aws?limit=${limit}`;
 
   fetch(apiUrl)
