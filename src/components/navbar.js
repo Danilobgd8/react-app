@@ -8,7 +8,7 @@ function Navbar() {
   };
 
   return (
-    <div className="container mx-auto" style={{ maxWidth: "1080px" }}>
+    <div>
       <button
         onClick={toggleMenu}
         className="text-blue-500 hover:text-gray-200 md:hidden"

@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { DataDispatchContext } from "./fetchData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import DarkTheme from "./darkTheme";
 
 function DataList() {
   const { state, dispatch } = useContext(DataDispatchContext);
   const { data, smallData, currentPage, itemsPerPage } = state;
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const deleteItem = (id, dataType) => {
     let updatedData;
@@ -18,6 +20,7 @@ function DataList() {
     }
   };
 
+  //za paginaciju
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
@@ -28,15 +31,12 @@ function DataList() {
   );
 
   return (
-    <div className="container mx-auto " style={{ maxWidth: "1080px" }}>
-      <div
-        className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2"
-        style={{ maxWidth: "1080px" }}
-      >
+    <div className={` ${isDarkMode ? "dark-mode" : ""}`}>
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
         {currentItems.map((item) => (
           <div
             key={item.id}
-            className="p-3 bg-white border border-blue-500 transition-transform duration-300 ease-in-out transform hover:scale-165 hover:shadow-lg hover:-translate-y-2 hover:-translate-x-2"
+            className="p-3 dark-menu bg-white border border-blue-500 transition-transform duration-300 ease-in-out transform hover:scale-165 hover:shadow-lg hover:-translate-y-2 hover:-translate-x-2"
             style={{
               width: "540px",
               height: "434px",
@@ -112,12 +112,13 @@ function DataList() {
           </div>
         ))}
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
         {currentSmallItems.map((item) => (
           <div
             key={item.id}
-            className="p-3 bg-white border border-blue-500 transition-transform duration-300 ease-in-out transform hover:scale-165 hover:shadow-lg hover:-translate-y-2 hover:-translate-x-2"
+            className={`p-3 ${
+              isDarkMode ? "dark-mode dark-menu" : ""
+            } bg-white border border-blue-500 transition-transform duration-300 ease-in-out transform hover:scale-165 hover:shadow-lg hover:-translate-y-2 hover:-translate-x-2`}
             style={{
               width: "540px",
               height: "217px",
@@ -163,7 +164,7 @@ function DataList() {
                   fontStyle: "normal",
                   fontWeight: 400,
                   lineHeight: "normal",
-                  marginBottom: "7px",
+                  marginBottom: "17px",
                 }}
               >
                 {item.description}
@@ -178,7 +179,7 @@ function DataList() {
                     fontStyle: "normal",
                     fontWeight: 700,
                     lineHeight: "uppercase",
-                    marginBottom: "10px",
+                    marginBottom: "25px",
                   }}
                 >
                   {item.title} <FontAwesomeIcon icon={faArrowRightLong} />
@@ -204,7 +205,7 @@ function DataList() {
           </div>
         ))}
       </div>
-
+      <DarkTheme isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />{" "}
       <div className="text-center">
         <p>Footer text</p>
       </div>

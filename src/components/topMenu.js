@@ -3,7 +3,7 @@ import logo from "./image/Logo.jpg";
 
 function TopMenu() {
   return (
-    <div className="container mx-auto" style={{ maxWidth: "1080px" }}>
+    <div>
       <nav className="md:flex md:items-center md:w-auto md:text-center md:w-full md:flex-grow">
         <div className="flex justify-between items-center w-full">
           <div style={{ width: "163px", height: "55px", flexShrink: 0 }}>

@@ -7,7 +7,10 @@ import TopMenu from "./components/topMenu";
 function App() {
   return (
     <DataFetcher>
-      <div>
+      <div
+        className="container mx-auto min-h-screen flex flex-col justify-center items-center "
+        style={{ maxWidth: "1080px" }}
+      >
         <div>
           <TopMenu />
           <br />

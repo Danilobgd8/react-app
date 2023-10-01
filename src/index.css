@@ -26,3 +26,25 @@ body{
 .hover-border:hover::after {
   border-color: #4299e1;
 }
+
+.dark-mode {
+  color: #ffffff !important; 
+  background-color: transparent !important;
+}
+
+
+.dark-mode .p-3 {
+  background-color: #333 !important; 
+  border-color: #348ABF !important;
+}
+
+.dark-mode h2,
+.dark-mode p {
+  color: #ffffff !important; 
+}
+
+
+
+
+
+
